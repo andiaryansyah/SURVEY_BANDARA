@@ -1,5 +1,5 @@
 import React from "react";
-
+import { AiFillStar } from 'react-icons/ai';
 const StarRating = ({
   commentValue,
   onChangeComment,
@@ -10,7 +10,7 @@ const StarRating = ({
   activeColor = "#f00",
   onChange,
 }) => {
-  const stars = Array.from({ length: count }, () => "🟊");
+  const stars = Array.from({ length: count }, () => <AiFillStar size={35}/>);
   let info = "Belum ada penilaian";
   let textColor = "text-blue-300";
   let show = "hidden";
@@ -50,7 +50,7 @@ const StarRating = ({
   return (
     <>
       <div className="flex items-center">
-        <div>
+        <div className="flex">
           {stars.map((s, index) => {
             let style = inactiveColor;
             if (index < value) {

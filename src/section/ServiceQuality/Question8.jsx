@@ -63,7 +63,7 @@ const Question8 = () => {
           <Stepper steps={steps} currentStep={currentStep} />
       </div>
       <div className="rounded bg-blue-100 px-8 py-5 m-10" role="alert">
-        <div className="flex items-center mb-3 text-blue-500">
+        <div className="flex items-center mb-3 text-[#182A68]">
           <img src={images.consultationIcon} alt="consultationIcon" width={20} />
           <p className="font-semibold ml-2">Konsultasi dan Pengaduan</p>
         </div>
@@ -91,7 +91,7 @@ const Question8 = () => {
           count={5}
           size={40}
           value={rating}
-          activeColor={"#2F80ED"}
+          activeColor={"#facc15"}
           inactiveColor={"#2F80ED50"}
           onChange={handleChange}
           commentValue={comment}

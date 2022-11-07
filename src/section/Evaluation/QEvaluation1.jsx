@@ -51,7 +51,7 @@ const QEvaluation1 = () => {
         <Stepper steps={steps} currentStep={currentStep} />
       </div>
       <div className="rounded bg-blue-100 px-8 py-5 m-10" role="alert">
-        <div className="flex items-center mb-3 text-blue-500">
+        <div className="flex items-center mb-3 text-[#182A68]">
           <img src={images.briefingIcon} alt="briefingIcon" width={20} />
           <p className="font-semibold ml-2">Pengarahan Petugas/Pegawai</p>
         </div>
@@ -70,6 +70,21 @@ const QEvaluation1 = () => {
 
       <div className="mx-10">
         <fieldset>
+        <div className="flex items-center text-center">
+            <input
+              id="Ya"
+              className=" h-4 w-4 peer/Ya"
+              type="radio"
+              name="evaluasi"
+              value="Ya"
+              onChange={handleChange}
+              checked={evaluation === 'Ya'}
+            />
+            <label htmlFor="Ya" className="peer-checked/Ya:text-gray-900 ml-2">
+              Ya
+            </label>
+          </div>
+
           <div className="flex items-center text-center">
             <input
               id="Tidak"
@@ -88,20 +103,6 @@ const QEvaluation1 = () => {
             </label>
           </div>
 
-          <div className="flex items-center text-center">
-            <input
-              id="Ya"
-              className=" h-4 w-4 peer/Ya"
-              type="radio"
-              name="evaluasi"
-              value="Ya"
-              onChange={handleChange}
-              checked={evaluation === 'Ya'}
-            />
-            <label htmlFor="Ya" className="peer-checked/Ya:text-gray-900 ml-2">
-              Ya
-            </label>
-          </div>
         </fieldset>
       </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from 'react-select'
-import { FcInfo } from "react-icons/fc";
+import { AiFillInfoCircle } from "react-icons/ai";
 import logo from "../../assets/logo.png";
 import cover from "../../assets/bg1.webp";
 import { useNavigate } from "react-router-dom";
@@ -97,9 +97,9 @@ const Landingpage = () => {
 
           <div className="my-10 mx-10">
             <div className="rounded bg-blue-100 px-8 py-5 " role="alert">
-              <div className="flex items-start mb-6 ">
-                <FcInfo size={40} className="mr-3" />
-                <p className="text-blue-500 font-medium text-sm">
+              <div className="flex items-start mb-6 text-[#182A68]">
+                <AiFillInfoCircle size={40} className="mr-3" />
+                <p className=" font-medium text-sm">
                   Untuk meningkatkan kualitas pelayanan publik, KEMENTERIAN
                   PERHUBUNGAN melakukan survei pelayanan publik.
                 </p>
@@ -122,7 +122,7 @@ const Landingpage = () => {
 
             <div className="mt-8 mb-1">
               <h1 className="font-semibold text-2xl">Identitas Responden</h1>
-              <p className="text-gray-400">
+              <p className="text-gray-400 mb-5">
                 Silahkan masukkan identitas anda pada form dibawah ini
               </p>
             </div>
@@ -172,6 +172,7 @@ const Landingpage = () => {
               <label className="block mt-4">
                 <span className="block text-slate-700 mb-1"><b>Pendidikan</b> (Wajib diisi)</span>
               <Select
+                menuPlacement="top"
                 options={lastEducation}
                 placeholder="Pilih pendidikan terakhir anda"
                 value={lastEducation.find((option) => {
@@ -184,10 +185,10 @@ const Landingpage = () => {
               
               <button
                 onClick={enabled === true ? handleClick : null}
-                className={`text-white py-2 px-4 mt-8 w-full font-semibold cursor-pointer
+                className={`text-white py-2 px-4 mt-8 w-full cursor-pointer
                  rounded border transition duration-200 ease-in-out ${
                    enabled === true
-                     ? "bg-blue-500 border-blue-500 hover:bg-blue-700"
+                     ? "bg-[#182A68] border-[#182A68] hover:bg-blue-700 "
                      : "bg-gray-300 border-gray-300 cursor-not-allowed"
                  } `}
               >

@@ -76,7 +76,7 @@ const StarRating = ({
         <div className={`ml-6 font-semibold ${textColor}`}>{info}</div>
       </div>
 
-      <div className={`transition duration-300 ${show}`}>
+      <div className={`mt-3 transition duration-300 ${show}`}>
         <p className="mb-2">Apakah ada yang ingin disampaikan?</p>
         <textarea
           className="border-2 focus:outline-none focus:ring-gray-400 focus:border-gray-400 placeholder-gray-300 w-80 md:w-6/12" 

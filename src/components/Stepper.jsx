@@ -50,7 +50,7 @@ const Stepper = ({steps, currentStep}) => {
     return (
       <div key={index} className="w-full">
         
-        <div className={`w-full border-t-8 transition duration-500 ease-in-out ${step.completed ? "border-blue-600" : "border-gray-300"}`}>
+        <div className={`w-full border-t-8 transition duration-500 ease-in-out ${step.completed ? "border-blue-900" : "border-gray-300"}`}>
           {/* Display Line */}
         </div>
       </div>
@@ -63,7 +63,7 @@ const Stepper = ({steps, currentStep}) => {
           <div className="font-bold mb-5">
             <h1>{steps[currentStep - 1]}</h1>
           </div>
-          <div className="font-bold text-blue-500">
+          <div className="font-bold text-blue-900">
             {/* display number */}
             {currentStep}/<span className="text-gray-400">3</span>
           </div>

@@ -63,7 +63,7 @@ const QEvaluation2 = () => {
           <Stepper steps={steps} currentStep={currentStep} />
       </div>
       <div className="rounded bg-blue-100 px-8 py-5 m-10" role="alert">
-        <div className="flex items-center mb-3 text-blue-500">
+        <div className="flex items-center mb-3 text-[#182A68]">
           <img src={images.repairIcon} alt="repairIcon" width={20} />
           <p className="font-semibold ml-2">Perbaikan</p>
         </div>

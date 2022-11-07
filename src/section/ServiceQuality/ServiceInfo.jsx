@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
 import { images } from "../../constants";
 
 const ServiceInfo = () => {
@@ -72,8 +73,8 @@ const ServiceInfo = () => {
         
           {data.map((data, index) => (
         <div key={index} className="rounded bg-blue-100 border border-blue-300 px-8 py-2" role="alert">
-            <div className=" text-blue-900 p-4 ">
-            <img src={data.icon} alt="icon" className="m-auto" />
+            <div className=" text-[#182A68] p-4 ">
+            <img src={data.icon} alt="icon" className="m-auto primary_color" />
             <h3 className="text-center mt-5">{data.title}</h3>
           </div>
         </div>
@@ -84,21 +85,21 @@ const ServiceInfo = () => {
       <div className="grid m-auto md:m-0 md:flex md:items-center md:justify-start md:mt-8">
         <button
           onClick={handlePrev}
-          className={`mr-3 bg-white text-blue-500 py-2 px-4 w-full mt-5 md:w-1/5 md:mt-0 font-semibold cursor-pointer
-         rounded border border-blue-500 hover:bg-blue-700 hover:text-white transition duration-200 ease-in-out`}
+          className={`mr-3 bg-white text-[#182A68] py-2 px-4 w-full mt-5 md:w-1/5 md:mt-0 cursor-pointer
+         rounded border border-[#182A68]  hover:bg-blue-700 hover:border-blue-700 hover:text-white transition duration-200 ease-in-out`}
         >
-          <span className="flex justify-center text-center gap-3">
-            <img src={images.prev} alt="prev" /> Sebelumnya
+          <span className="flex justify-center items-center text-center gap-3">
+            <AiOutlineArrowLeft className="hover:text-white"/> Sebelumnya
           </span>
         </button>
 
         <button
           onClick={handleNext}
           className={`text-white py-2 px-4 cursor-pointer my-3 w-full md:w-1/5 md:ml-3
-          rounded border transition duration-200 ease-in-out bg-blue-500 border-blue-500 hover:bg-blue-700`}
+          rounded border transition duration-200 ease-in-out bg-[#182A68] border-[#182A68] hover:bg-blue-700 hover:border-blue-700`}
         >
-          <span className="flex justify-center text-center gap-3">
-            Selanjutnya <img src={images.next} alt="next" />
+          <span className="flex justify-center items-center text-center gap-3">
+            Selanjutnya <AiOutlineArrowRight />
           </span>
         </button>
       </div>

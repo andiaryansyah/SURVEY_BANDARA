@@ -13,6 +13,9 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.primary_color {
+  color: #182A68;
+}
 
 @tailwind base;
 @tailwind components;

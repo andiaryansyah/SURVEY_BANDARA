@@ -20,6 +20,10 @@ import extortionIcon from '../assets/extortion.svg'
 import briefingIcon from '../assets/briefing.svg'
 import repairIcon from '../assets/repair.svg'
 
+import pasBandara from '../assets/pas_bandara.webp'
+import formatPDF from '../assets/pdf.svg'
+import formatJPG from '../assets/jpeg.svg'
+
 // eslint-disable-next-line
 export default {
     infoIcon,
@@ -40,4 +44,7 @@ export default {
     fraudIcon,
     discriminationIcon,
     extortionIcon,
+    pasBandara,
+    formatJPG,
+    formatPDF,
 }

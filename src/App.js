@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Landingpage } from './pages'
+import { Dashboard, Landingpage, Pasbandara } from './pages'
 import { Survey } from './section';
 import { QEvaluation1, QEvaluation2 } from './section/Evaluation';
 import { QBehaviour1, QBehaviour2, QBehaviour3, QBehaviour4, QBehaviour5 } from './section/ServiceBehavior';
@@ -32,6 +32,9 @@ function App() {
         
         <Route path='/evaluation/question/1' element={<QEvaluation1 />} />
         <Route path='/evaluation/question/2' element={<QEvaluation2 />} />
+
+        <Route path='/dashboard' element={<Dashboard />}/>
+        <Route path='/Pasbandara' element={<Pasbandara />}/>
 
         {/* <RefreshRoute path='/myComponent' redirectionPath='/' /> */}
       </Routes>

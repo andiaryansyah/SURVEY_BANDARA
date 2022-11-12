@@ -6,8 +6,16 @@ import UploadFile from "../../components/UploadFile";
 
 const PasBandara = () => {
   const [enabled, setEnabled ] = useState(false);
-  // const [dragActive, setDragActive] = useState(false)
-  const [msg, setMsg] = useState("")
+  const [msg, setMsg] = useState({
+    file1:null,
+    file2:null,
+    file3:null,
+    file4:null,
+    file5:null,
+    file6:null,
+    file7:null,
+    file8:null,
+  })
   const [files, setFiles] = useState({
     file1:null,
     file2:null,
@@ -19,35 +27,19 @@ const PasBandara = () => {
     file8:null,
   })
 
-  // const handleDrag = function(e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   if (e.type === "dragenter" || e.type === "dragover") {
-  //     setDragActive(true);
-  //   } else if (e.type === "dragleave") {
-  //     setDragActive(false);
-  //   }
-  // };
-
-  // const handleDrop = function(e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   setDragActive(false);
-  //   if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-  //   console.log(e.dataTransfer);
-  //   }
-  // };
-
-  const handleClick = () => {
-
+  const handleSubmit = () => {
+    
   }
 
   const handleChange = (e) => {
     const image = e.target.files[0]
     const name = e.target.name
 
-        if (image.size > 1048576 ) {
-            setMsg('Melebihi ukuran file')
+        if (image && image.size > 1048576 ) {
+            setMsg({
+              ...msg,
+              [name] : "Melebihi ukuran file"
+            })
         } else {
     setFiles({
       ...files,
@@ -61,11 +53,11 @@ const PasBandara = () => {
       ...files,
       [name] : null
     })
-    setMsg(null)
+    setMsg({...msg, [name] : null})
   }
 
   useEffect(() => {
-    if (files.file1 && files.file2 && files.file3 && files.file4 && files.file5 && files.file6 && files.file7 && files.file8) {
+    if (files.file1 && files.file2 && files.file3 && files.file4 && files.file5 && files.file7) {
       setEnabled(true)
     } else {
       setEnabled(false)
@@ -132,7 +124,7 @@ const PasBandara = () => {
               file={files.file1}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file1}
               note={"* Hanya format file : .pdf"}
               accepted=".pdf"
               name="file1"
@@ -149,7 +141,7 @@ const PasBandara = () => {
               file={files.file2}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file2}
               note={"* Hanya format file : .jpeg, .jpg"}
               accepted="image/*"
               name="file2"
@@ -166,7 +158,7 @@ const PasBandara = () => {
               file={files.file3}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file3}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file3"
@@ -183,7 +175,7 @@ const PasBandara = () => {
               file={files.file4}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file4}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file4"
@@ -200,7 +192,7 @@ const PasBandara = () => {
               file={files.file5}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file5}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file5"
@@ -217,7 +209,7 @@ const PasBandara = () => {
               file={files.file6}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file6}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file6"
@@ -234,7 +226,7 @@ const PasBandara = () => {
               file={files.file7}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file7}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file7"
@@ -251,7 +243,7 @@ const PasBandara = () => {
               file={files.file8}
               onChange={handleChange}
               onDelete={handleDelete}
-              msg={msg}
+              msg={msg.file8}
               note={"* Hanya format file : .pdf"}
               accepted='.pdf'
               name="file8"
@@ -261,7 +253,7 @@ const PasBandara = () => {
 
         <div className="flex items-center justify-end">
           <button
-            onClick={enabled === true ? handleClick : null}
+            onClick={enabled === true ? handleSubmit : null}
             className={`text-white py-4 px-4 mt-8 w-96 cursor-pointer
                  rounded border transition duration-200 ease-in-out font-semibold ${
                    enabled === true

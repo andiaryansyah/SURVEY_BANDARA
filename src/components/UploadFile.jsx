@@ -18,7 +18,7 @@ const UploadFile = ({ name, file, msg, onChange, onDelete, note, accepted }) => 
             { getExtension(file["name"]).toLowerCase() === "pdf" ? <img src={images.formatPDF} alt="pdf" /> : <img src={images.formatJPG} alt="jpg" /> }
             <div className="ml-2">
                 <p className="font-semibold ml-2">{file.name}</p>
-                <p className="font-semibold ml-2">{file.size / 1000} kb</p>
+                <p className="ml-2 text-gray-500">{file.size / 1000} kb</p>
             </div>
 
           </div>
@@ -51,17 +51,17 @@ const UploadFile = ({ name, file, msg, onChange, onDelete, note, accepted }) => 
             name={name}
           />
         </label>
-          <div className="text-blue-500 mt-2 font-medium">
-            <h1>
-              <i>{note}</i>
-            </h1>
-            { msg ? 
-            <div className="flex items-center mt-2 text-red-600">
-                <MdCancel size={20}/>
-                <h1 className="ml-2 text-lg">{msg}</h1>
+            <div className="text-blue-500 mt-2 font-medium">
+                <h1>
+                <i>{note}</i>
+                </h1>
+                { msg ? 
+                <div className="flex items-center mt-2 text-red-600">
+                    <MdCancel size={20}/>
+                    <h1 className="ml-2 text-lg">{msg}</h1>
+                </div>
+                : null}
             </div>
-            : null}
-          </div>
         </>
       )}
     </>

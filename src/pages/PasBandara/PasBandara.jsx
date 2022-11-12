@@ -1,19 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { images } from "../../constants";
 import logo from "../../assets/logo.png";
 import UploadFile from "../../components/UploadFile";
 
 const PasBandara = () => {
-  const [enabled ] = useState(true);
-  const [file1, setFile1] = useState();
-  const [file2, setFile2] = useState();
-  const [file3, setFile3] = useState();
-  const [file4, setFile4] = useState();
-  const [file5, setFile5] = useState();
-  const [file6, setFile6] = useState();
-  const [file7, setFile7] = useState();
-  const [file8, setFile8] = useState();
+  const [enabled, setEnabled ] = useState(false);
+  // const [dragActive, setDragActive] = useState(false)
+  const [msg, setMsg] = useState("")
+  const [files, setFiles] = useState({
+    file1:null,
+    file2:null,
+    file3:null,
+    file4:null,
+    file5:null,
+    file6:null,
+    file7:null,
+    file8:null,
+  })
+
+  // const handleDrag = function(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   if (e.type === "dragenter" || e.type === "dragover") {
+  //     setDragActive(true);
+  //   } else if (e.type === "dragleave") {
+  //     setDragActive(false);
+  //   }
+  // };
+
+  // const handleDrop = function(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setDragActive(false);
+  //   if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+  //   console.log(e.dataTransfer);
+  //   }
+  // };
+
+  const handleClick = () => {
+
+  }
+
+  const handleChange = (e) => {
+    const image = e.target.files[0]
+    const name = e.target.name
+
+        if (image.size > 1048576 ) {
+            setMsg('Melebihi ukuran file')
+        } else {
+    setFiles({
+      ...files,
+      [name] : image
+    })
+  }
+  }
+
+  const handleDelete = (name) => {
+    setFiles({
+      ...files,
+      [name] : null
+    })
+    setMsg(null)
+  }
+
+  useEffect(() => {
+    if (files.file1 && files.file2 && files.file3 && files.file4 && files.file5 && files.file6 && files.file7 && files.file8) {
+      setEnabled(true)
+    } else {
+      setEnabled(false)
+    }
+  },[files])
 
   return (
     <div>
@@ -72,11 +129,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file1}
-              // onChange={handleChange}
-              // onDelete={handleClear}
-              setFile={setFile1}
+              file={files.file1}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted=".pdf"
+              name="file1"
               />
           </div>
         </div>
@@ -87,9 +146,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file2}
-              setFile={setFile2}
+              file={files.file2}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .jpeg, .jpg"}
+              accepted="image/*"
+              name="file2"
               />
           </div>
         </div>
@@ -100,9 +163,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file3}
-              setFile={setFile3}
+              file={files.file3}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file3"
               />
           </div>
         </div>
@@ -113,9 +180,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file4}
-              setFile={setFile4}
+              file={files.file4}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file4"
               />
           </div>
         </div>
@@ -126,9 +197,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file5}
-              setFile={setFile5}
+              file={files.file5}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file5"
               />
           </div>
         </div>
@@ -139,9 +214,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file6}
-              setFile={setFile6}
+              file={files.file6}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file6"
               />
           </div>
         </div>
@@ -152,9 +231,13 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file7}
-              setFile={setFile7}
+              file={files.file7}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file7"
               />
           </div>
         </div>
@@ -165,16 +248,20 @@ const PasBandara = () => {
           </div>
           <div className="w-full">
             <UploadFile
-              file={file8}
-              setFile={setFile8}
+              file={files.file8}
+              onChange={handleChange}
+              onDelete={handleDelete}
+              msg={msg}
               note={"* Hanya format file : .pdf"}
+              accepted='.pdf'
+              name="file8"
               />
           </div>
         </div>
 
         <div className="flex items-center justify-end">
           <button
-            // onClick={enabled === true ? handleClick : null}
+            onClick={enabled === true ? handleClick : null}
             className={`text-white py-4 px-4 mt-8 w-96 cursor-pointer
                  rounded border transition duration-200 ease-in-out font-semibold ${
                    enabled === true

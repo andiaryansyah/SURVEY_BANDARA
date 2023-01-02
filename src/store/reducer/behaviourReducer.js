@@ -42,6 +42,9 @@ export default function behaviourReducer (state = initialState, action) {
         return {...state, calo:action.payload}
     }
 
-    
+    if (action.type === "RESET_STATE") {
+        return {...initialState}
+    }
+
     return state;
 }

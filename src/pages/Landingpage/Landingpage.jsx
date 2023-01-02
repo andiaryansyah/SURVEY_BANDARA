@@ -25,12 +25,12 @@ const Landingpage = () => {
     {value:"Sekolah Menengah Pertama (SMP)", label:"Sekolah Menengah Pertama (SMP)"},
     {value:"Sekolah Menengah Atas (SMA)", label:"Sekolah Menengah Atas (SMA)"},
     {value:"Diploma", label:"Diploma"},
-    {value:"Strata 1(S1)",label:"Strata 1(S1)"},
+    {value:"Strata 1 (S1)",label:"Strata 1 (S1)"},
     {value:"Strata 2 (S2)", label:"Strata 2 (S2)"},
     {value:"Strata 3 (S3)", label:"Strata 3 (S3)"},
   ];
   const genders = [
-    { value:"Laki-laki", label:"Laki-laki"},
+    { value:"Laki-Laki", label:"Laki-Laki"},
     { value:"Perempuan", label:"Perempuan"}
   ];
   const ages = [

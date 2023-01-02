@@ -6,15 +6,21 @@ import Stepper from "../../components/Stepper";
 import { useDispatch, useSelector } from "react-redux";
 import { images } from "../../constants";
 import { savePerbaikan } from "../../store/action/evalutionAction";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Loading from "../../pages/Loading";
+import { resetState } from "../../store/action";
 
 const QEvaluation2 = () => {
 
   const { steps, currentStep } = useSelector((state) => state.steps);
-  const {perbaikan} = useSelector((state) => state.evaluation);
-  const {pekerjaan} = useSelector((state) => state.responden);
-
-  const [repairing, setRepairing] = useState(perbaikan)
-
+  const { pekerjaan, usia, gender, pendidikan } = useSelector((state) => state.responden);
+  const { info, persyaratan, prosedur, waktu, biaya, sarana, respon, konsultasi } = useSelector((state) => state.quality)
+  const { diskriminasi, kecurangan, gratifikasi, pungli, calo } = useSelector((state) => state.behaviour);
+  const {evaluasi, perbaikan} = useSelector((state) => state.evaluation);
+  
+  const [repairing, setRepairing] = useState(perbaikan);
+  const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,7 +29,13 @@ const QEvaluation2 = () => {
     const {value, checked } = e.target;
 
     if (checked) {
-      setRepairing([...repairing, value],);
+      if (value === "Tidak ada yang perlu diperbaiki") {
+        setRepairing([value],);  
+      } else {
+        let tempData = repairing.filter((e) => e !== "Tidak ada yang perlu diperbaiki")
+        tempData.push(value)
+        setRepairing(tempData);
+      }
     }
     else {
       setRepairing(repairing.filter((e) => e !== value))
@@ -49,7 +61,69 @@ const QEvaluation2 = () => {
 
   const handleNext = () => {
     dispatch(savePerbaikan(repairing))
-    navigate("/survey-done");
+    let payload = {
+      // produk_layanan: {
+      //     produk_layanan: Lain-Lain
+      // },
+      identitas: {
+          pekerjaan,
+          usia,
+          jenis_kelamin: gender,
+          pendidikan_terakhir: pendidikan
+      },
+      kualitas_layanan: {
+          informasi: info.rating,
+          ket_informasi: info.comment,
+          persyaratan: persyaratan.rating,
+          ket_persyaratan: persyaratan.comment,
+          prosedur: prosedur.rating,
+          ket_prosedur: prosedur.comment,
+          waktu_penyelesaian: waktu.rating,
+          ket_waktu_penyelesaian: waktu.comment,
+          tarif: biaya.rating,
+          ket_tarif: biaya.comment,
+          sarana_prasarana: sarana.rating,
+          ket_sarana_prasarana: sarana.comment,
+          respon: respon.rating,
+          ket_respon: respon.comment,
+          konsultasi: konsultasi.rating,
+          ket_konsultasi: konsultasi.comment
+      },
+      penyimpangan_pelayanan: {
+          diskriminasi: diskriminasi.rating,
+          ket_diskriminasi: diskriminasi.comment,
+          kecurangan: kecurangan.rating,
+          ket_kecurangan: kecurangan.comment,
+          gratifikasi: gratifikasi.rating,
+          ket_gratifikasi: gratifikasi.comment,
+          pungli: pungli.rating,
+          ket_pungli: pungli.comment,
+          calo: calo.rating,
+          ket_calo: calo.comment
+      },
+      evaluasi_perbaikan: {
+          pengarahan: evaluasi,
+          perbaikan: perbaikan
+      }
+    }
+    setLoading(true);
+    axios({
+      method: "POST",
+      url: `${process.env.REACT_APP_API_URL}/survey/add`,
+      data: payload
+    })
+      .then((res) => {
+      setLoading(false);
+      dispatch(resetState())
+      navigate("/survey-done");
+    })
+    .catch((err) => {
+      setLoading(false);
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      // console.log(err);
+    })
   };
 
   const handleprev = () => {
@@ -58,6 +132,9 @@ const QEvaluation2 = () => {
   };
 
   return (
+    <>
+    {
+      loading ? <Loading /> :
     <div>
       <div className="mt-5">
           <Stepper steps={steps} currentStep={currentStep} />
@@ -252,6 +329,8 @@ const QEvaluation2 = () => {
         <ButtonNext handleClick={handleNext} enabled={enabled} title={true}/>
       </div>
     </div>
+    }
+    </>
   );
 };
 

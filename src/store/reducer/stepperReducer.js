@@ -16,5 +16,9 @@ export default function stepperReducer (state= initialState, action) {
         return {...state, currentStep:action.payload}
     }
 
+    if (action.type === "RESET_STATE") {
+        return {...state}
+    }
+
     return state;
 }

@@ -23,5 +23,9 @@ if (action.type === "SET_PENDIDIKAN" ){
     return {...state, pendidikan:action.payload}
 }
 
+if (action.type === "RESET_STATE") {
+    return {...initialState}
+}
+
  return state;
 }

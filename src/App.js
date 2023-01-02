@@ -6,6 +6,8 @@ import { QEvaluation1, QEvaluation2 } from './section/Evaluation';
 import { QBehaviour1, QBehaviour2, QBehaviour3, QBehaviour4, QBehaviour5 } from './section/ServiceBehavior';
 import { Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8 } from './section/ServiceQuality';
 import LottieAnimation from './components/LottieAnimation'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
 
         {/* <RefreshRoute path='/myComponent' redirectionPath='/' /> */}
       </Routes>
+      <ToastContainer />
    </BrowserRouter>
   );
 }

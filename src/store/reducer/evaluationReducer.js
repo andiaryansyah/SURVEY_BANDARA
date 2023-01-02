@@ -12,5 +12,9 @@ export default function evaluationReducer (state = initialState, action) {
         return {...state, perbaikan: action.payload}
     }
 
+    if (action.type === "RESET_STATE") {
+        return {...initialState}
+    }
+
     return state;
 }

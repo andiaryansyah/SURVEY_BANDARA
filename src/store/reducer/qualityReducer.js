@@ -61,6 +61,10 @@ export default function qualityReducer (state= initialState, action) {
     if (action.type === "SET_KONSULTASI" ){
         return {...state, konsultasi:action.payload}
     }
+
+    if (action.type === "RESET_STATE") {
+        return {...initialState}
+    }
    
     return state;
    }

@@ -63,7 +63,7 @@ const Landingpage = () => {
     }
 
   },[age, job, jk, education]);
-
+  
   return (
     <>
       <div>

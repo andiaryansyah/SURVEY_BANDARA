@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import animationData from "../assets/successfully.json";
 import { useNavigate } from "react-router-dom";
+import { resetState } from "../store/action";
+import { useDispatch } from "react-redux";
 
 const LottieAnimation = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const interval = setInterval(() => {
+      dispatch(resetState())
         navigate("/")
     }, 5000);
     return () => clearInterval(interval);

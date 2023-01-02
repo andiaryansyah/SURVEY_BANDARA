@@ -9,7 +9,6 @@ import { savePerbaikan } from "../../store/action/evalutionAction";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loading from "../../pages/Loading";
-import { resetState } from "../../store/action";
 
 const QEvaluation2 = () => {
 
@@ -114,7 +113,6 @@ const QEvaluation2 = () => {
     })
       .then((res) => {
       setLoading(false);
-      dispatch(resetState())
       navigate("/survey-done");
     })
     .catch((err) => {
